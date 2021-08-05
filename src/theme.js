@@ -1,12 +1,12 @@
 const theme = {
   colors: {
-    primary: '#6200ee',
+    primary: '#ff6961',
     background: '#00000014',
     text: '#000000B3',
     success: '#135E01',
   },
   fonts: {
-    fontFamily: 'Roboto, sans-serif',
+    regular: 'Roboto, sans-serif',
   },
 };
 
