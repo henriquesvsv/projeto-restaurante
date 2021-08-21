@@ -3,27 +3,29 @@ import React, { useEffect } from 'react';
 import Portal from './Portal';
 import { Overlay, Dialog } from './styles';
 
-const Modal = ({ children, open, onClose }) => {
+const Modal = ({  open, onclose , children}) => {
   useEffect(() => {
     function onEsc(event) {
-      if (event.keyCode === 27) onClose();
+      if (event.keyCode === 27)onclose();
     }
     window.addEventListener('keydown', onEsc);
 
     return () => {
       window.addEventListener('keydown', onEsc);
     };
-  }, [onClose]);
+  }, [onclose]);
 
   if (!open) return null;
 
   function onOverlayClick() {
-    onClose();
+      onclose();
   }
 
   function onDialogClick(event) {
     event.stopPropagation();
   }
+
+  
 
   return (
     <Portal>

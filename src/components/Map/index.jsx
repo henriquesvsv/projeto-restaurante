@@ -9,7 +9,6 @@ export const MapContainer = (props) => {
   const [map, setMap] = useState(null);
   const { restaurants } = useSelector((state) => state.restaurants);
   const { google, query, placeId } = props;
-
   const searchByQuery = useCallback(
     (map, query) => {
       const service = new google.maps.places.PlacesService(map);
@@ -18,7 +17,7 @@ export const MapContainer = (props) => {
       const request = {
         location: map.center,
         radius: '200',
-        type: ['restaurant'],
+        type: ['restaurants'],
         query,
       };
 
@@ -35,6 +34,7 @@ export const MapContainer = (props) => {
     (placeId) => {
       const service = new google.maps.places.PlacesService(map);
       dispatch(setRestaurant(null));
+      
 
       const request = {
         placeId,
@@ -64,10 +64,11 @@ export const MapContainer = (props) => {
 
   const searchNearby = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
+    dispatch(setRestaurants([]))
 
     const request = {
       location: center,
-      radius: '20000',
+      radius: '2000',
       type: ['restaurant'],
     };
 
